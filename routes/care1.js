@@ -20,9 +20,13 @@ router.post('/', function(req, res) {
 
    
    if(time){
-    time=moment(time).utc().format("DD MMM YYYY hh:mm a")
+    //time=moment(time).utc().format("DD MMM YYYY hh:mm a");
     var scheduleTime= new Date(time);
-    console.log("Read time "+ scheduleTime+" "+time)
+	var time1 = new Date( scheduleTime.getTime() + ( scheduleTime.getTimezoneOffset() * 60000 ) );
+	console.log("scheduleTime = " + scheduleTime);
+   	console.log("time1 = " + time1);
+   	console.log("machineTime = " + new Date());
+    //console.log("Read time "+ scheduleTime+" "+time);
 
     var careResp = {
         "speech": "your call back request successful",
